@@ -73,9 +73,9 @@ void WeatherExporter::pwsWeatherExport(const WeatherBridgeContext &context) {
         request += measurements.getHumidity().getValue();
     }
     if (measurements.getRainMmLastHour().hasValue()) {
-        Log.traceln("Skipping rainin send to pwsweather, value=%f", measurements.getRainMmLastHour().getValue());
-//        request += "&rainin=";
-//        request += mmToInch(measurements.getRainMmLastHour().getValue());
+//        Log.traceln("Skipping rainin send to pwsweather, value=%f", measurements.getRainMmLastHour().getValue());
+        request += "&rainin=";
+        request += mmToInch(measurements.getRainMmLastHour().getValue());
     }
     request += "&softwaretype=esp32bridge&action=updateraw";
 
@@ -156,8 +156,8 @@ void WeatherExporter::weatherUndergroundExport(const WeatherBridgeContext &conte
     }
     if (measurements.getRainMmLastHour().hasValue()) {
         Log.traceln("Skipping rainin send to wunderground, value=%f", measurements.getRainMmLastHour().getValue());
-//        request += "&rainin=";
-//        request += mmToInch(measurements.getRainMmLastHour().getValue());
+        request += "&rainin=";
+        request += mmToInch(measurements.getRainMmLastHour().getValue());
     }
     request += "&softwaretype=esp32bridge&action=updateraw&realtime=1";
     request += "&rtfreq=";
