@@ -3,10 +3,11 @@
 StationMeasurements::StationMeasurements(StationModel stationModel, int stationId, int rssi,
                                          const Optional<float> &temperatureC, const Optional<float> &windSpeedKmH,
                                          const Optional<float> &windDirectorDeg, const Optional<float> &rainMm,
-                                         const Optional<int> &humidity) : stationModel(stationModel),
+                                         const Optional<int> &humidity, const Optional<float> &barometricPressure) : stationModel(stationModel),
                                                                           stationId(stationId), rssi(rssi),
                                                                           temperatureC(temperatureC),
                                                                           windSpeedKmH(windSpeedKmH),
                                                                           windDirectorDeg(windDirectorDeg),
                                                                           rainMmAccumulation(rainMm),
-                                                                          humidity(humidity) {}
+                                                                          humidity(humidity),
+                                                                          barometricPressure(barometricPressure) {}

@@ -14,7 +14,11 @@ WeatherBridgeSettings::WeatherBridgeSettings(
         const String &&windyStationId,
         const String &&wuApiKey,
         const String &&wuStationId,
-        const String &&selectedStationId
+        const String &&selectedStationId,
+        const String &&mqttHost,
+        const String &&mqttUser,
+        const String &&mqttPass,
+        const String &&mqttPort
 ) : wlanSsid(wlanSsid),
     wlanPassword(wlanPassword),
     apSsid(apSsid.isEmpty() ? String(DEFAULT_AP_NAME) : apSsid),
@@ -28,7 +32,11 @@ WeatherBridgeSettings::WeatherBridgeSettings(
     windyStationId(windyStationId),
     wuApiKey(wuApiKey),
     wuStationId(wuStationId),
-    selectedStationId(selectedStationId) {}
+    selectedStationId(selectedStationId),
+    mqttHost(mqttHost),
+    mqttUser(mqttUser),
+    mqttPass(mqttPass),
+    mqttPort(mqttPort) {}
 
 
 WeatherBridgeSettings::WeatherBridgeSettings(WeatherBridgeSettings &&other) noexcept:
@@ -45,7 +53,11 @@ WeatherBridgeSettings::WeatherBridgeSettings(WeatherBridgeSettings &&other) noex
         windyStationId(std::move(other.windyStationId)),
         wuApiKey(std::move(other.wuApiKey)),
         wuStationId(std::move(other.wuStationId)),
-        selectedStationId(std::move(other.selectedStationId)) {}
+        selectedStationId(std::move(other.selectedStationId)),
+        mqttHost(std::move(other.mqttHost)),
+        mqttPort(std::move(other.mqttPort)),
+        mqttUser(std::move(other.mqttUser)),
+        mqttPass(std::move(other.mqttPass)) {}
 
 WeatherBridgeSettings::WeatherBridgeSettings(const WeatherBridgeSettings &other) = default;
 
@@ -65,6 +77,10 @@ WeatherBridgeSettings &WeatherBridgeSettings::operator=(WeatherBridgeSettings &&
         wuApiKey = std::move(other.wuApiKey);
         wuStationId = std::move(other.wuStationId);
         selectedStationId = std::move(other.selectedStationId);
+        mqttHost = std::move(other.mqttHost);
+        mqttPort = std::move(other.mqttPort);
+        mqttUser = std::move(other.mqttUser);
+        mqttPass = std::move(other.mqttPass);
     }
     return *this;
 }
@@ -85,10 +101,29 @@ WeatherBridgeSettings &WeatherBridgeSettings::operator=(const WeatherBridgeSetti
         wuApiKey = other.wuApiKey;
         wuStationId = other.wuStationId;
         selectedStationId = other.selectedStationId;
+        mqttHost = other.mqttHost;
+        mqttPort = other.mqttPort;
+        mqttUser = other.mqttUser;
+        mqttPass = other.mqttPass;
     }
     return *this;
 }
 
+const String &WeatherBridgeSettings::getMqttHost() const {
+    return mqttHost;
+}
+
+const String &WeatherBridgeSettings::getMqttPort() const {
+    return mqttPort;
+}
+
+const String &WeatherBridgeSettings::getMqttUser() const {
+    return mqttUser;
+}
+
+const String &WeatherBridgeSettings::getMqttPass() const {
+    return mqttPass;
+}
 
 const String &WeatherBridgeSettings::getWlanSsid() const {
     return wlanSsid;

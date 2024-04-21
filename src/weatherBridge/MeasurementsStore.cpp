@@ -24,7 +24,7 @@ void MeasurementsStore::updateMeasurements(const StationMeasurements &measuremen
     if (measurements.stationModel != stationModel || measurements.stationId != stationId) {
         return;
     }
-
+    
     rssi.set(measurements.rssi);
     if (measurements.temperatureC.hasValue()) {
         temperatureC.set(measurements.temperatureC.getValue());

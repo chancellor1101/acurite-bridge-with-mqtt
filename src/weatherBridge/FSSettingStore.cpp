@@ -17,6 +17,11 @@ static const String WINDY_STATION_ID = FS_SETTING_STORE_KEY("windy_id");
 static const String WU_API_KEY = FS_SETTING_STORE_KEY("wu_key");
 static const String WU_STATION_ID = FS_SETTING_STORE_KEY("wu_id");
 static const String SELECTED_STATION_ID = FS_SETTING_STORE_KEY("selected_station_id");
+static const String MQTT_HOST = FS_SETTING_STORE_KEY("mqtt_host");
+static const String MQTT_USER = FS_SETTING_STORE_KEY("mqtt_user");
+static const String MQTT_PASS = FS_SETTING_STORE_KEY("mqtt_pass");
+static const String MQTT_PORT = FS_SETTING_STORE_KEY("mqtt_port");
+
 
 FSSettingStore::FSSettingStore(FS &fs) noexcept: fs(fs) {}
 
@@ -56,7 +61,11 @@ WeatherBridgeSettings FSSettingStore::loadSettings() {
             readFile(WINDY_STATION_ID),
             readFile(WU_API_KEY),
             readFile(WU_STATION_ID),
-            readFile(SELECTED_STATION_ID)
+            readFile(SELECTED_STATION_ID),
+            readFile(MQTT_HOST),
+            readFile(MQTT_USER),
+            readFile(MQTT_PASS),
+            readFile(MQTT_PORT)
     };
 }
 
@@ -76,6 +85,10 @@ bool FSSettingStore::writeSettings(WeatherBridgeSettings &settings) {
     bool wuApiKeyWriteRes = writeFile(WU_API_KEY, settings.getWuApiKey());
     bool wuStationIdWriteRes = writeFile(WU_STATION_ID, settings.getWuStationId());
     bool selectedStationIdWriteRes = writeFile(SELECTED_STATION_ID, settings.getSelectedStationId());
+    bool mqttHostWriteRes = writeFile(MQTT_HOST, settings.getMqttHost());
+    bool mqttUserWriteRes = writeFile(MQTT_USER, settings.getMqttUser());
+    bool mqttPassWriteRes = writeFile(MQTT_PASS, settings.getMqttPass());
+    bool mqttPortWriteRes = writeFile(MQTT_PORT, settings.getMqttPort());
 
     return wlanSsidWriteRes
            && wlanPasswordWriteRes
@@ -90,7 +103,11 @@ bool FSSettingStore::writeSettings(WeatherBridgeSettings &settings) {
            && windyStationIdWriteRes
            && wuApiKeyWriteRes
            && wuStationIdWriteRes
-           && selectedStationIdWriteRes;
+           && selectedStationIdWriteRes
+           && mqttHostWriteRes
+           && mqttUserWriteRes
+           && mqttPassWriteRes
+           && mqttPortWriteRes;
 }
 
 String FSSettingStore::readFile(const String &path) {

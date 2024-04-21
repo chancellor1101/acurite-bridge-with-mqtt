@@ -1,6 +1,5 @@
 #include "weatherBridge/SettingsServer.hpp"
 
-
 static constexpr auto WIFI_SSID = "wifi_ssid";
 static constexpr auto WIFI_PASSWORD = "wifi_password";
 static constexpr auto WIFI_AP_SSID = "wifi_ap_ssid";
@@ -17,7 +16,10 @@ static constexpr auto WU_STATION_ID = "wu_station_id";
 static constexpr auto STATION_OPTIONS_PLACEHOLDER = "station_options";
 static constexpr auto SELECTED_STATION_FORM_FIELD = "station";
 static constexpr auto SELECTED_STATION_PRESERVE_OPTION = "preserve settings";
-
+static constexpr auto MQTT_HOST = "mqtt_host";
+static constexpr auto MQTT_PORT = "mqtt_port";
+static constexpr auto MQTT_USER = "mqtt_user";
+static constexpr auto MQTT_PASS = "mqtt_pass";
 
 void SettingsServer::startServer(fs::FS &fs, FSSettingStore &settingStore,
                                  const AvailableStationsTracker &availableStationsTracker) {
@@ -48,6 +50,14 @@ void SettingsServer::startServer(fs::FS &fs, FSSettingStore &settingStore,
                 return settings.getWindyStationId();
             } else if (var == WU_API_KEY) {
                 return settings.getWuApiKey();
+            } else if (var == MQTT_HOST) {
+                return settings.getMqttHost();
+            } else if (var == MQTT_USER) {
+                return settings.getMqttUser();
+            } else if (var == MQTT_PASS) {
+                return settings.getMqttPass();
+            } else if (var == MQTT_PORT) {
+                return settings.getMqttPort();
             } else if (var == WU_STATION_ID) {
                 return settings.getWuStationId();
             } else if (var == STATION_OPTIONS_PLACEHOLDER) {
@@ -88,6 +98,10 @@ void SettingsServer::startServer(fs::FS &fs, FSSettingStore &settingStore,
         String wuStationId = "";
         String posixTzString = "";
         String selectedStationId = "";
+        String mqttHost = "";
+        String mqttPort = "";
+        String mqttUser = "";
+        String mqttPass = "";
 
         for (int i = 0; i < params; i++) {
             AsyncWebParameter *p = request->getParam(i);
@@ -116,6 +130,14 @@ void SettingsServer::startServer(fs::FS &fs, FSSettingStore &settingStore,
                     windyStationId = p->value();
                 } else if (p->name() == WU_API_KEY) {
                     wuApiKey = p->value();
+                } else if (p->name() == MQTT_HOST) {
+                    mqttHost = p->value();
+                } else if (p->name() == MQTT_USER) {
+                    mqttUser = p->value();
+                } else if (p->name() == MQTT_PASS) {
+                    mqttPass = p->value();
+                } else if (p->name() == MQTT_PORT) {
+                    mqttPort = p->value();
                 } else if (p->name() == WU_STATION_ID) {
                     wuStationId = p->value();
                 } else if (p->name() == SELECTED_STATION_FORM_FIELD) {
@@ -146,7 +168,11 @@ void SettingsServer::startServer(fs::FS &fs, FSSettingStore &settingStore,
                 std::move(windyStationId),
                 std::move(wuApiKey),
                 std::move(wuStationId),
-                std::move(selectedStationId)
+                std::move(selectedStationId),
+                std::move(mqttHost),
+                std::move(mqttUser),
+                std::move(mqttPass),
+                std::move(mqttPort)
         );
         settingStore.updateSettings(std::move(settings));
     });

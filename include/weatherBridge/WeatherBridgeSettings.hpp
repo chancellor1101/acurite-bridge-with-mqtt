@@ -20,6 +20,10 @@ private:
     String wuStationId = "";
     String posixTzString = "";
     String selectedStationId = "";
+    String mqttHost = "";
+    String mqttPort = "";
+    String mqttUser = "";
+    String mqttPass = "";
 
 public:
     WeatherBridgeSettings() = default;
@@ -37,7 +41,11 @@ public:
                           const String &&windyStationId,
                           const String &&wuApiKey,
                           const String &&wuStationId,
-                          const String &&selectedStationId
+                          const String &&selectedStationId,
+                          const String &&mqttHost,
+                          const String &&mqttPort,
+                          const String &&mqttUser,
+                          const String &&mqttPass
     );
 
     WeatherBridgeSettings(WeatherBridgeSettings &&other) noexcept;
@@ -49,6 +57,14 @@ public:
     WeatherBridgeSettings &operator=(const WeatherBridgeSettings &other) noexcept;
 
     const String &getWlanSsid() const;
+
+    const String &getMqttHost() const;
+
+    const String &getMqttPort() const;
+
+    const String &getMqttUser() const;
+
+    const String &getMqttPass() const;
 
     const String &getWlanPassword() const;
 

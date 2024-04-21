@@ -38,7 +38,8 @@ void Acurite5N1Receiver::receiveMessage(String &&message) {
                 Optional<float>::of(doc["wind_avg_km_h"]),
                 Optional<float>::of(doc["wind_dir_deg"]),
                 Optional<float>::of(doc["rain_mm"]),
-                Optional<int>::empty()
+                Optional<int>::empty(),
+                Optional<float>::empty()
         );
         for (const auto &item: callbacks) {
             item(measurements);
@@ -54,7 +55,8 @@ void Acurite5N1Receiver::receiveMessage(String &&message) {
                 Optional<float>::of(doc["wind_avg_km_h"]),
                 Optional<float>::empty(),
                 Optional<float>::empty(),
-                Optional<int>::of(doc["humidity"])
+                Optional<int>::of(doc["humidity"]),
+                Optional<float>::empty()
         );
         for (const auto &item: callbacks) {
             item(measurements);

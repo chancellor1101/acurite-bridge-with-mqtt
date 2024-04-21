@@ -16,6 +16,8 @@
                 "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                 "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/HTTPClient/src",
                 "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
+                "c:/Users/Clint Chance/Documents/GitHub/acurite-bridge-with-mqtt/.pio/libdeps/ttgo-lora32-v21/Ethernet/src",
+                "c:/Users/Clint Chance/Documents/GitHub/acurite-bridge-with-mqtt/.pio/libdeps/ttgo-lora32-v21/PubSubClient/src",
                 "c:/Users/Clint Chance/Documents/GitHub/acurite-bridge-with-mqtt/.pio/libdeps/ttgo-lora32-v21/ESPAsyncWebServer-esphome/src",
                 "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/FS/src",
@@ -257,6 +259,8 @@
                     "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                     "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/HTTPClient/src",
                     "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
+                    "c:/Users/Clint Chance/Documents/GitHub/acurite-bridge-with-mqtt/.pio/libdeps/ttgo-lora32-v21/Ethernet/src",
+                    "c:/Users/Clint Chance/Documents/GitHub/acurite-bridge-with-mqtt/.pio/libdeps/ttgo-lora32-v21/PubSubClient/src",
                     "c:/Users/Clint Chance/Documents/GitHub/acurite-bridge-with-mqtt/.pio/libdeps/ttgo-lora32-v21/ESPAsyncWebServer-esphome/src",
                     "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "C:/Users/Clint Chance/.platformio/packages/framework-arduinoespressif32/libraries/FS/src",
@@ -489,7 +493,7 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=60114",
+                "PLATFORMIO=60115",
                 "ARDUINO_TTGO_LoRa32_v21new",
                 "SSD1306_NO_SPLASH",
                 "HAVE_CONFIG_H",

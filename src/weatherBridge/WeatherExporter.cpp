@@ -1,5 +1,9 @@
 #include <HTTPClient.h>
 #include <MD5Builder.h>
+#include <SPI.h>
+#include <Ethernet.h>
+#include <PubSubClient.h>
+
 
 #include "weatherBridge/WeatherExporter.hpp"
 #include "weatherBridge/WeatherBridgeContext.hpp"

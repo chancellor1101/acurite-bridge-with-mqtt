@@ -1,0 +1,5 @@
+{
+    "cmake.configureOnOpen": true,
+    "platformio-ide.useDevelopmentPIOCore": true,
+    "platformio-ide.customPATH": "C:/Users/Clint Chance/.platformio/penv/Scripts"
+}
